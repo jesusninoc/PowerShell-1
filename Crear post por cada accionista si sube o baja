@@ -1,5 +1,4 @@
 ```PowerShell
-
 $web=Invoke-WebRequest ‘http://www.bolsamadrid.es/esp/aspx/Mercados/Precios.aspx?indice=ESI100000000’ 
 $bancobaja=$web.AllElements | Where Class -eq “DifFlBj” | %{$_.innerText} 
 $bancosube=$web.AllElements | Where Class -eq “DifFlSb” | %{$_.innerText} 
@@ -76,5 +75,4 @@ foreach($banca in $bancosdown){
     php C:\xampp\htdocs\wptest\wp-cli.phar post create --post_title="$banca baja!" --post_content="Las acciones de $banca bajan un $valo %" --post_type="post" --post_status="publish"
     $lineo++
 }
-
 ```
