@@ -1,5 +1,4 @@
 ```PowerShell
-
 function mostrarMenu 
 { 
      param ( 
@@ -16,6 +15,7 @@ function mostrarMenu
      Write-Host "5. Saca el hash de los modulos de un proceso"
      Write-Host "6. Crear usuario de una base de datos"
      Write-Host "7. Obtener procesos o servicios"
+     Write-Host "8. Verificar la integridad del archivo de operaciones"
      Write-Host "E. Ejecuta un comando" 
      Write-Host "X. Salir" 
 }
@@ -164,6 +164,19 @@ $output = $rawdatos.Output
     if($quien -eq "procesos"){Write-Host "Se ha creado el fichero $pet.txt con el nombre de los procesos en $path"}
     if($quien -eq "servicios"){Write-Host "Se ha creado el fichero $pet.txt con el nombre de los servicios en $path"}
 
+} '8' {
+
+New-SSHSession -Computer 192.168.137.200 -Credential kike
+$rawdatos = Invoke-SSHCommand -Index 0 "cat check.txt"
+$output = $rawdatos.Output
+
+$check = Invoke-SSHCommand -Index 0 "md5sum operaciones.txt"
+$hash=$check.output
+$buenhash=$hash.replace(" ",(","))
+$superbuenhash=$buenhash.split(",")[0]
+if($superbuenhash -eq $output){Write-Host "La integridad no se ha visto afectada"}else{Write-Host "La integridad se ha visto comprometida"}
+
+
 } 'E' {
 
     $com = Read-Host "Escriba el comando que desee ejecutar"
@@ -178,4 +191,5 @@ $output = $rawdatos.Output
      pause 
 } 
 until ($input -eq 'X')
+
 ```
