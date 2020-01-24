@@ -60,3 +60,53 @@ if($accion -eq "firewall"){
     Write-Host "Se ha creado una nueva regla, permitiendo la conexión al puerto 2021"
 }
 ´´´
+
+```PHP
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<title>P001</title>
+</head>
+
+<body>
+	<?php
+				
+		$enviar = htmlspecialchars($_GET['enviar']);
+		
+		$var = ("./ini/datos.ini");
+		$base = parse_ini_file($var);		
+		$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);
+		
+		if($enviar == "print")
+		{
+			$con = $php->prepare("SELECT * FROM examen24 WHERE accion = 'print';");
+			$con->execute();
+			$registros = $con->fetchAll(PDO::FETCH_NUM);
+            
+			$resultado = $registros[0][1];			
+			?>
+            <h1><?php echo $resultado ?></h1><?php
+		} else if ($enviar == "connection") {
+			$con = $php->prepare("SELECT * FROM examen24 WHERE accion = 'connection';");
+			$con->execute();
+			$registros = $con->fetchAll(PDO::FETCH_NUM);
+            
+			$resultado = $registros[0][1];			
+			?>
+            <h1><?php echo $resultado ?></h1><?php
+		} else if ($enviar == "firewall") {
+            $con = $php->prepare("SELECT * FROM examen24 WHERE accion = 'firewall';");
+			$con->execute();
+			$registros = $con->fetchAll(PDO::FETCH_NUM);
+            
+			$resultado = $registros[0][1];			
+			?>
+            <h1><?php echo $resultado ?></h1><?php
+        }
+	?>
+</body>
+
+</html>
+```
