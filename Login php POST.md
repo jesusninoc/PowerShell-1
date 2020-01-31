@@ -1,3 +1,14 @@
+# Form
+```PHP
+<form action="login.php" method="post">
+    Usuario: <input type="text" name="user" /><br />
+	Pass: <input type="text" name="pass" /><br />
+	
+    <input type="submit" name="submit" value="Enviar" />
+</form>
+```
+
+# Action
 ```PHP
 
 <?PHP
