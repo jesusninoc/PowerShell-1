@@ -59,6 +59,7 @@ if($accion -eq "firewall"){
 
     Write-Host "Se ha creado una nueva regla, permitiendo la conexión al puerto 2021"
 }
+```
 
 ```PHP
 <!DOCTYPE html>
