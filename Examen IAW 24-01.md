@@ -1,4 +1,4 @@
-#Script PS
+####Script PS
 ```Powershell
 $accion = Read-host = "Introduce la accion"
 if($accion -eq "print"){
@@ -62,7 +62,7 @@ if($accion -eq "firewall"){
 }
 ```
 
-#Código PHP
+####Código PHP
 ```PHP
 <!DOCTYPE html>
 <html>
