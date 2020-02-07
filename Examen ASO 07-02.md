@@ -128,3 +128,8 @@ $output = gc .\examen.txt
 } 
 until ($input -eq 'X')
 ```
+
+# Nota
+La carpeta compartida se hace con New-PSDrive y sus respectivos parámetros, de ahí después se hace un gc (gc Z:\fichero.txt) y se cogen los datos.
+No se ha podido hacer, porque Windows Server 2012 y Windows 7 no admiten ese cmdlet.
+No se ha usado Windows 10 ni Windows Server 2019/2016 porque están demasiado cargados de funciones y características que el servidor no se puede usar con normalidad.
