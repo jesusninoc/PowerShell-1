@@ -183,3 +183,6 @@ $output = gc .\examen.txt
 } 
 until ($input -eq 'X')
 ```
+
+# Nota
+Falta encontrar la forma de sacar el último ID de los trabajos de un usuario, para evitar que entren más
